@@ -60,16 +60,44 @@ background-color:#FFCC66;
 
 }
 </style>
-<script src="" type="text/javascript"></script>
+
+<script type="text/javascript">
+/*do javascript*/
+/*동적타이핑*/
+/* alert('clicked'); --> clicked가 출력됨  */
+/* document.getElementById() ; id를 이용해서 접근함 */
+function onTabClicked(index){
+//id="tab-"+index;
+//alert(id);
+//신기한게 var를 붙이지 않으면 id를 다른 함수에서 사용해도 쓸 수 있음!
+//var를 붙이면 scope가 이 함수까지!
+var id="tab-"+index;
+
+if(indexSelected != -1){
+	var liElement= document.getElementById("tab-"+index);
+	liElement.className = "selected";	
+}
+
+var liElement= document.getElementById(id);
+liElement.className = "selected";
+indexSelected = index;
+//selected css부분을 실행하도록함
+
+var divTabView = document.getElementById("tabview");
+divTabView.innerHTML = "<strong> 탭" + index + "뷰 내용입니다.</strong>";
+
+}
+</script>
+
 </head>
 <body>
 	<div class="tab-box">
 		<ul>
-			<li>메뉴 1</li>
-			<li>메뉴 2</li>
-			<li>메뉴 3</li>
-			<li class="selected">메뉴 4</li>
-			<li>메뉴 5</li>
+			<li id="tab-1" onclick="onTabClicked(1);">메뉴 1</li>
+			<li id="tab-2" onclick="onTabClicked(2);">메뉴 2</li>
+			<li id="tab-3" onclick="onTabClicked(3);">메뉴 3</li>
+			<li id="tab-4" onclick="onTabClicked(4);">메뉴 4</li>
+			<li id="tab-5" onclick="onTabClicked(5);">메뉴 5</li>
 		</ul>
 		<div class="tab-view">탭뷰입니다.</div>
 	</div>
