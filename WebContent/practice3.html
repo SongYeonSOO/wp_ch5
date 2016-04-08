@@ -66,20 +66,22 @@ background-color:#FFCC66;
 /*동적타이핑*/
 /* alert('clicked'); --> clicked가 출력됨  */
 /* document.getElementById() ; id를 이용해서 접근함 */
+var indexSelected=-1
 function onTabClicked(index){
+if(indexSelected != -1){
+	var liElement= document.getElementById("tab-"+indexSelected);
+	liElement.className = "";	
+}
+
 //id="tab-"+index;
 //alert(id);
 //신기한게 var를 붙이지 않으면 id를 다른 함수에서 사용해도 쓸 수 있음!
 //var를 붙이면 scope가 이 함수까지!
 var id="tab-"+index;
 
-if(indexSelected != -1){
-	var liElement= document.getElementById("tab-"+index);
-	liElement.className = "selected";	
-}
-
 var liElement= document.getElementById(id);
 liElement.className = "selected";
+liElement.style.backgroundColor="";
 indexSelected = index;
 //selected css부분을 실행하도록함
 
